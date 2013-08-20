@@ -29,6 +29,7 @@ $app->redirectIfTrailingSlash();
 $env = $app->detectEnvironment(array(
 
 	'local' => array('local.presentable.org'),
+	'production' => array('presentable.treadsoft.ly'),
 
 ));
 
