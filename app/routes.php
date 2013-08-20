@@ -13,8 +13,11 @@
 
 Route::get('/', 'HomeController@home');
 
-Route::resource('presentations/new', 'PresentationController@create');
+Route::get('presentations', 'PresentationController@index');
+Route::get('presentations/{slug}/slides', 'SlideController@index');
+Route::get('presentations/{slug}/slides/{number}', 'SlideController@show');
 
-Route::resource('presentations', 'PresentationController');
-
-Route::resource('presentations/{id}/slides', 'SlideController');
+Route::group(array('before' => 'auth'), function() {
+  Route::resource('presentations', 'PresentationController');
+  Route::resource('presentations/{slug}/slides', 'SlideController');
+});

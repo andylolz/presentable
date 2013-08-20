@@ -15,9 +15,13 @@
         <td>
           {{ \Form::open(array('method' => 'delete', 'url' => \URL::action('PresentationController@destroy', array($presentation->slug)))) }}
             <div class="btn-group">
-              <a class="btn" href="{{ \URL::action('SlideController@show', array($presentation->slug, 1)) }}"><i class="icon-search"></i></a>
-              <a class="btn" href="{{ \URL::action('SlideController@index', array($presentation->slug)) }}"><i class="icon-pencil"></i></a>
-              {{ \Form::button('<i class="icon-remove"></i>', array('type' => 'submit', 'class' => 'btn btn-danger')) }}
+              <a href="{{ \URL::action('SlideController@show', array($presentation->slug, 1)) }}" class="btn"><i class="icon-search"></i></a>
+              <a href="{{ \URL::action('SlideController@index', array($presentation->slug)) }}" class="btn"
+              @if (Auth::guest())
+                disabled="disabled"
+              @endif
+              ><i class="icon-pencil"></i></a>
+              {{ \Form::button('<i class="icon-remove"></i>', array('type' => 'submit', 'class' => 'btn btn-danger', 'disabled' => Auth::guest() ? true : null)) }}
             </div>
           {{ \Form::close() }}
         </td>
@@ -30,5 +34,7 @@
   </table>
   @endif
 
+  @if (Auth::user())
   <a href="{{ \URL::action('PresentationController@create') }}" class="btn">Create</a>
+  @endif
 @endsection

@@ -15,10 +15,12 @@ $(function() {
   $('.slide-show li').hide();
 
   $('.slide-show').keydown(function(event) {
+    @if (Auth::user())
     if(event.which == 27) {
       // escape
       window.location.href = "{{ \URL::action('SlideController@edit', array($presentation->slug, $slide->number)) }}";
     }
+    @endif
 
     if(event.which == 37) {
       // left arrow

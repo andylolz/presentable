@@ -13,8 +13,12 @@
           {{ \Form::open(array('method' => 'delete', 'url' => \URL::action('SlideController@destroy', array($presentation->slug, $slide->number)))) }}
             <div class="btn-group">
               <a href="{{ \URL::action('SlideController@show', array($presentation->slug, $slide->number)) }}" class="btn"><i class="icon-search"></i></a>
-              <a href="{{ \URL::action('SlideController@edit', array($presentation->slug, $slide->number)) }}" class="btn"><i class="icon-pencil"></i></a>
-              {{ \Form::button('<i class="icon-remove"></i>', array('type' => 'submit', 'class' => 'btn btn-danger')) }}
+              <a href="{{ \URL::action('SlideController@edit', array($presentation->slug, $slide->number)) }}" class="btn"
+              @if (Auth::guest())
+                disabled="disabled"
+              @endif
+              ><i class="icon-pencil"></i></a>
+              {{ \Form::button('<i class="icon-remove"></i>', array('type' => 'submit', 'class' => 'btn btn-danger', 'disabled' => Auth::guest() ? true : null)) }}
             </div>
           {{ \Form::close() }}
         </div>
@@ -22,6 +26,7 @@
     </li>
     @endforeach
 
+    @if (Auth::user())
     <li class="span2">
       <div class="thumbnail">
         <div class="caption">
@@ -31,5 +36,6 @@
         </div>
       </div>
     </li>
+    @endif
   </ul>
 @endsection
