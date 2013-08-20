@@ -1,0 +1,13 @@
+body {
+  margin-top: 60px;
+}
+
+.slide-edit textarea {
+  width: 100%;
+}
+
+.slide-show {
+  background: #eee;
+  font-size: xx-large;
+  margin: 100px 120px 60px;
+}
