@@ -26,7 +26,7 @@
           {{ \Form::close() }}
         </td>
         <td>
-          <h4><a href="{{ \URL::action('SlideController@show', array($presentation->slug, 1)) }}">{{ $presentation->title }}</a></h4>
+          <h4><a href="{{ \URL::action('SlideController@index', array($presentation->slug)) }}">{{ $presentation->title }}</a></h4>
         </td>
       </tr>
       @endforeach
