@@ -9,12 +9,12 @@
 
     <!-- Le styles -->
     <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="/css/font-awesome.min.css" rel="stylesheet">
     <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="/favicon.ico">
     <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="/css/global.css" rel="stylesheet">
     @yield('extra-css')
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
   </head>
 
   <body class="@yield('body-class')">

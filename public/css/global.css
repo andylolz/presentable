@@ -11,3 +11,7 @@ body {
   font-size: xx-large;
   margin: 100px 120px 60px;
 }
+
+.slide-show .container {
+  width: 1064px;
+}
