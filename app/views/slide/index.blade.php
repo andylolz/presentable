@@ -26,7 +26,7 @@
     </li>
     @endforeach
 
-    @if (Auth::user())
+    @if (Auth::check())
     <li class="span2">
       <div class="thumbnail">
         <div class="caption">

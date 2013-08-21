@@ -1,6 +1,12 @@
 <?php
 
 class PresentationController extends Controller {
+  public function __construct()
+  {
+    $this->beforeFilter('csrf', array('on' => 'post'));
+    $this->beforeFilter('auth', array('only' => array('create', 'store', 'destroy')));
+  }
+
   /**
    * Display the presentation index.
    */

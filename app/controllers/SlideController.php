@@ -2,6 +2,12 @@
 use dflydev\markdown\MarkdownExtraParser;
 
 class SlideController extends Controller {
+  public function __construct()
+  {
+    $this->beforeFilter('csrf', array('on' => 'post'));
+    $this->beforeFilter('auth', array('only' => array('store', 'edit', 'update', 'destroy')));
+  }
+
   /**
    * Display the slide index.
    */

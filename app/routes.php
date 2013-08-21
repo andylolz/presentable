@@ -11,13 +11,16 @@
 |
 */
 
+// homepage
 Route::get('/', 'HomeController@home');
 
-Route::get('presentations', 'PresentationController@index');
-Route::get('presentations/{slug}/slides', 'SlideController@index');
-Route::get('presentations/{slug}/slides/{number}', 'SlideController@show');
+// auth stuff
+Route::get('login', 'AuthController@login');
+Route::post('login', array('before' => 'csrf', 'uses' => 'AuthController@authenticate'));
+Route::get('logout', 'AuthController@logout');
 
-Route::group(array('before' => 'auth'), function() {
-  Route::resource('presentations', 'PresentationController');
-  Route::resource('presentations/{slug}/slides', 'SlideController');
-});
+// routes to resourceful controllers
+Route::resource('presentations', 'PresentationController',
+  array('only' => array('index', 'create', 'store', 'destroy')));
+Route::resource('presentations/{slug}/slides', 'SlideController',
+  array('only' => array('index', 'store', 'show', 'edit', 'update', 'destroy')));

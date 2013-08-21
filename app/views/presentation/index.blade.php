@@ -34,7 +34,7 @@
   </table>
   @endif
 
-  @if (Auth::user())
+  @if (Auth::check())
   <a href="{{ \URL::action('PresentationController@create') }}" class="btn">Create</a>
   @endif
 @endsection
